@@ -1,0 +1,27 @@
+pragma solidity 0.4.20;
+contract Bvote {
+   address public voter;
+   address[] public nominees;
+   struct voter {
+      uint256 gas;
+      uint256 votedFor;
+   }
+   // The address of the voter and the user info   
+   mapping(address => voter) public voterInfo;
+   function Bvote(uint256 gas) public {
+   voter = msg.sender;
+   }
+   function kill() public {
+      if(msg.sender == voter) selfdestruct(owner);
+   }
+   function applicableVote (uint256 votedFor) public votable{
+      require(!checkuserExists(msg.sender));
+      require(VotedFor >= 1 && votedFor <= 5);    // the nominees for votes are supposedly numbered 1 to 5
+      voterInfo[msg.sender].gas = msg.value;
+      voterInfo[msg.sender].votedFor = votedFor;
+      nominees.push(msg.sender);
+      
+      
+     
+   }
+}
