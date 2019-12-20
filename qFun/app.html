@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/web3@0.20.5/dist/web3.min.js"></script>
+        <!-- The generated javascript and app.js will be substituted in below -->
+        <!-- JAVASCRIPT -->
+
+        <!-- The app.css contents will be substituted in below -->
+        <!-- STYLE -->
+    </head>
+    <body>
+            <div id="create" class="tabcontent">
+                <h2>QFun</h2>
+                <div class="input-group">
+                    <h3>Teacher's Address</h3>
+                    <input type="text" id="create-address" placeholder="Enter address..." />
+                </div>
+                <div class="input-group">
+                    <h3>Amount</h3>
+                    <input type="number" id="create-amount" placeholder="Enter amount..." />
+                </div>
+                <div class="input-group">
+                    <button class="btn" id="button-create">Send</button>
+                </div>
+            </div>  
+
+            <div id="balances" class="tabcontent">
+                <h2>Questions</h2>
+                <div class="input-group">
+                    <h3>Question 1</h3>
+                    <input type="text" id="Question" placeholder="Enter Question..." />
+                </div>
+                <div class="input-group">
+                    <h3>Answer</h3>
+                    <input type="text" id="Answer" placeholder="Enter Answer to Question 1" />
+                </div>
+                <div class="input-group" >
+                    <button class="btn" id="Submit">Submit</button>
+                    
+                </div>
+            </div>         
+        <div class="input-group">
+                    <h3>Student's Address</h3>
+                    <input type="text" id="Student-address" placeholder="Enter address..." />
+                </div>
+        <h1 class="text message">Question 1:&nbsp;<span id="message"></span></h1>
+        <input type="text" id="AnswerS" placeholder="Enter Answer to Question 1" />
+        <div class="input-group" >
+                    <button class="btn" id="SubmitS">Submit</button>
+                    
+                </div>
+        <h1 class="text message">&nbsp;<span id="message2"></span></h1>
+    </body>
+</html>
