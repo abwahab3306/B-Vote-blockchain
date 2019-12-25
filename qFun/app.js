@@ -10,6 +10,11 @@ function QFun(Contract) {
     this.Contract = Contract;
 }
 
+var address;
+var amount;
+var answer;
+var StudentAns;
+
 QFun.prototype.init = function() {
     // We create a new Web3 instance using either the Metamask provider
     // or an independent provider created towards the endpoint configured for the contract.
@@ -50,15 +55,19 @@ QFun.prototype.createTokens = function() {
     var that = this;
 
     // Get input values
-    var address = $("#create-address").val();
-    var amount = $("#create-amount").val();
+    address = $("#create-address").val();
+    amount = $("#create-amount").val();
     console.log(amount);
 
 
     // Validate address
     if(!isValidAddress(address)) {
+
         console.log("Invalid address");
         return;
+    } else{
+        document.getElementById("questionstabs").className += " show";
+        document.getElementById("teacherTabs").classList.remove("show");
     }
 
     // Validate amount
@@ -66,6 +75,8 @@ QFun.prototype.createTokens = function() {
         console.log("Invalid amount");
         return;
     }
+
+
 
     
         
@@ -96,7 +107,7 @@ QFun.prototype.waitForReceipt = function(hash, cb) {
 
 // Check if it has the basic requirements of an address
 function isValidAddress(address) {
-    return /^(0x)?[0-9a-f]{40}$/i.test(address);
+    return /^(0x)?[0-9a-f]{40}$/i.test(address) ;
 }
 
 // Basic validation of amount. Bigger than 0 and typeof number
@@ -109,19 +120,31 @@ QFun.prototype.bindButtons = function() {
 
     $(document).on("click", "#button-create", function() {
         that.createTokens();
+        
+        
+        
+       
     });
 
-    $(document).on("click", "#Submit", function() {
+    $(document).on("click", "#Submitquestions", function() {
         var Question = $("#Question").val();
+        answer = $("#Answer").val();
          $("#message").text(Question);
+         document.getElementById("student").className +="show";
+         document.getElementById("questionstabs").classList.remove("show");
+         
+
     }); 
 
-    $(document).on("click", "#SubmitS", function() {
-        var Answer = $("#Answer").val();
-        var AnswerS = $("#AnswerS").val();
-        if (Answer == AnswerS){
-            var amount = $("#create-amount").val();
-            $("#message2").text("Congragulations!, you won "+ amount + " Ether");
+    $(document).on("click", "#studentSubmit", function() {
+        console.log(address);
+        console.log()
+        console.log(answer);
+        StudentAns = $("#studentAnswer").val();
+        console.log(StudentAns);
+        if (answer == StudentAns){
+            document.getElementById("student").classList.remove("show");
+            $("#message2").text("Congragulations! you won "+ amount + " Ether");
             // Transfer amount to other address
             this.instance.mint(address, amount, { from: window.web3.eth.accounts[0], gas: 100000, gasPrice: 100000, gasLimit: 100000 }, 
                 function(error, txHash) {
@@ -142,12 +165,15 @@ QFun.prototype.bindButtons = function() {
                 }
             )
         }
+        else
+        $("#message2").text("Wrong answer! Try again");
     }); 
 }
 
 QFun.prototype.onReady = function() {
     this.bindButtons();
     this.init();
+    
 };
 
 if(typeof(Contracts) === "undefined") var Contracts={ QFun: { abi: [] }};
@@ -156,3 +182,8 @@ var QFun = new QFun(Contracts['QFun']);
 $(document).ready(function() {
     QFun.onReady();
 });
+
+
+
+   
+
