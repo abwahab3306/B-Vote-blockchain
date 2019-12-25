@@ -9,8 +9,37 @@
 
         <!-- The app.css contents will be substituted in below -->
         <!-- STYLE -->
+        <script>
+            
+        function som(){
+           document.getElementById("start").className = " hide";
+           document.getElementById("teacherTabs").className = " show";  
+               
+        }
+        function students(){
+            
+            document.getElementById("teacherFromTabs").className = " show";
+            document.getElementById("start").className = " hide";
+        }
+        function toStudent(){
+            document.getElementById("student").className +="show";
+            document.getElementById("teacherFromTabs").classList.remove("show");
+        }
+
+
+        </script>
     </head>
     <body>
+        <div id="start" class=" ">
+            <h2>Select One</h2>
+            <button id="teacherButton" class="btn btn-primary" onclick="som();">
+                Teacher
+            </button>
+            <button id="studentButton" class="btn btn-primary" onclick="students();">
+                Student
+            </button>
+        </div>
+        <div id="teacherTabs" class="">
             <div id="create" class="tabcontent">
                 <h2>QFun</h2>
                 <div class="input-group">
@@ -25,7 +54,24 @@
                     <button class="btn" id="button-create">Send</button>
                 </div>
             </div>  
+            </div>
 
+            <div id="teacherFromTabs" class="">
+            <div id="create" class="tabcontent">
+                <h2>please type teacher's address to start</h2>
+                <div class="input-group">
+                    <h3>Teacher's Address</h3>
+                    <input type="text" id="create-address" placeholder="Enter address..." />
+                </div>
+               
+                <div class="input-group">
+                    <button class="btn" onclick="toStudent()" id="toStudent">Send</button>
+                </div>
+            </div>  
+            </div>
+
+
+            <div id="questionstabs" class=" ">
             <div id="balances" class="tabcontent">
                 <h2>Questions</h2>
                 <div class="input-group">
@@ -36,21 +82,25 @@
                     <h3>Answer</h3>
                     <input type="text" id="Answer" placeholder="Enter Answer to Question 1" />
                 </div>
-                <div class="input-group" >
-                    <button class="btn" id="Submit">Submit</button>
+              <button class="btn" id="Submitquestions">Submit</button>
                     
-                </div>
-            </div>         
-        <div class="input-group">
+            </div>    
+            </div>
+
+            <div id="student">
+        <div class="input-group" >
                     <h3>Student's Address</h3>
                     <input type="text" id="Student-address" placeholder="Enter address..." />
                 </div>
-        <h1 class="text message">Question 1:&nbsp;<span id="message"></span></h1>
-        <input type="text" id="AnswerS" placeholder="Enter Answer to Question 1" />
+        <h1 class="text message">Question 1: &nbsp;<span id="message"></span></h1>
+        <input type="text" id="studentAnswer" placeholder="Enter Answer to Question 1" />
         <div class="input-group" >
-                    <button class="btn" id="SubmitS">Submit</button>
+                    <button class="btn" id="studentSubmit">Submit</button>
                     
                 </div>
-        <h1 class="text message">&nbsp;<span id="message2"></span></h1>
+        
+            </div>
+
+            <h1 class="text message">&nbsp;<span id="message2"></span></h1>
     </body>
 </html>
