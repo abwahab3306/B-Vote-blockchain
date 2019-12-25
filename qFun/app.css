@@ -1,0 +1,31 @@
+body {
+    background-color: #725BA4;
+    color: #FCE8DF;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+}
+
+.hide{
+    display: none !important;
+    transition: display 2s;
+}
+
+.show{
+    display: block !important;
+    transition: display 2s;
+    
+}
+
+#teacherTabs{
+display: none;
+}
+
+#questionstabs{
+    display: none;
+}
+#student{
+    display: none;
+}
+#teacherFromTabs{
+    display: none;
+}
