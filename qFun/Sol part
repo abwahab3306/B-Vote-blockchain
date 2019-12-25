@@ -33,6 +33,8 @@ contract QFun {
         balances[receiver] += amount;
         emit Sent(msg.sender, receiver, amount);
     }
+
+    
 struct Answer
     {
         bytes32 text; 
